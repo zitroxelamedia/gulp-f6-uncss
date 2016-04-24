@@ -1,0 +1,5 @@
+@import "settings/settings";
+@import "../base/myvariables.scss";
+@import "foundation";
+
+@include foundation-everything($flex: true);
