@@ -16,6 +16,7 @@
     "tests"
   ],
   "devDependencies": {
-    "foundation-sites": "^6.2.1"
+    "foundation-sites": "^6.2.1",
+    "modernizr": "^3.3.1"
   }
 }

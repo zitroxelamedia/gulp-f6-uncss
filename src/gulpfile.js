@@ -21,7 +21,8 @@ var src = {
     imgs: './imgs/',
     jquery: './bower_components/jquery/dist/jquery.min.js',
     foundJS: './bower_components/foundation-sites/js/',
-    foundSCSS: './bower_components/foundation-sites/scss/'
+    foundSCSS: './bower_components/foundation-sites/scss/',
+    modernizr: './bower_components/modernizr/modernizr.js'
 };
 
 var output = {
@@ -103,6 +104,13 @@ gulp.task('appJS', ['vendorJS'], function () {
         .pipe(browserSync.stream());
 });
 
+// Compresses and moves modernizr.js file to Template Directory
+gulp.task('modernizr', function () {
+    return gulp.src(src.modernizr)
+        .pipe(uglify())
+        .pipe(gulp.dest(output.jsVendor));
+});
+
 // Optimize images in move to Template Directory
 gulp.task('images', function () {
     return gulp.src(src.imgs + '*')
@@ -116,7 +124,7 @@ gulp.task('images', function () {
 
 // Watch commands and Browser Sync initialization *********************
 
-gulp.task('watch', ['minify-html', 'sass', 'foundJS', 'appJS', 'images'], function () {
+gulp.task('watch', ['minify-html', 'sass', 'foundJS', 'appJS', 'modernizr', 'images'], function () {
     browserSync.init({
         server: './../'
     });
